@@ -785,7 +785,7 @@ RC PF_BufferMgr::InternalAlloc(int &slot)
    else {
 
       // Choose the least-recently used page that is unpinned
-      for (slot = first; slot != INVALID_SLOT; slot = bufTable[slot].next) {
+      for (slot = last; slot != INVALID_SLOT; slot = bufTable[slot].prev) {
          if (bufTable[slot].pinCount == 0)
             break;
       }
